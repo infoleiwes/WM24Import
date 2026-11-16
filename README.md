@@ -65,7 +65,8 @@ Dolibarr-Produktexport (CSV, Kodierung ISO-8859-1) eine neue Tabelle, in der jed
 WM24-Produkt dem passenden Dolibarr-Produkt zugeordnet wird – inkl. Preisvergleich.
 
 ```bash
-python3 wm24_dolibarr_abgleich.py "WM24_Hersteller Admin  Produkt-Liste.csv" "Dolibarr_export_produit_2.csv" WM24_Dolibarr_Preisvergleich
+python3 wm24_dolibarr_abgleich.py "WM24_Hersteller Admin  Produkt-Liste.csv" "Dolibarr_export_produit_2.csv"
+# optionales 3. Argument: Ausgabe-Präfix (Default: WM24_Dolibarr_Preisvergleich)
 ```
 
 Ausgabe: `WM24_Dolibarr_Preisvergleich.xlsx` (Excel) und `.csv` (Semikolon, UTF-8 mit BOM).
