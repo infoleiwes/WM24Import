@@ -6,7 +6,8 @@ dem passenden Dolibarr-Produkt (Ref.Nr. z. B. KAETG-1KG) zugeordnet wird,
 inkl. Preisvergleich WM24 "Preis" vs. Dolibarr "PriceLevelUnitPriceTTC".
 
 Aufruf:
-    python3 wm24_dolibarr_abgleich.py <wm24_csv> <dolibarr_csv> <ausgabe_prefix>
+    python3 wm24_dolibarr_abgleich.py <wm24_csv> <dolibarr_csv> [ausgabe_prefix]
+    # ohne ausgabe_prefix wird "WM24_Dolibarr_Preisvergleich" verwendet
 """
 
 import csv
@@ -121,7 +122,14 @@ def match(wm_row, candidates):
 
 
 def main():
-    wm_path, doli_path, out_prefix = sys.argv[1], sys.argv[2], sys.argv[3]
+    if len(sys.argv) < 3:
+        print(
+            "Aufruf: python3 wm24_dolibarr_abgleich.py <wm24_csv> <dolibarr_csv> [ausgabe_prefix]",
+            file=sys.stderr,
+        )
+        sys.exit(2)
+    wm_path, doli_path = sys.argv[1], sys.argv[2]
+    out_prefix = sys.argv[3] if len(sys.argv) > 3 else "WM24_Dolibarr_Preisvergleich"
     candidates = load_dolibarr(doli_path)
 
     results = []
